@@ -7,17 +7,15 @@
  
 The goal of this script is to provide a fast and lightweight (3kb minified / 1kb gzipped) script to enable [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) in browsers that don't support CSS3 Media Queries - in particular, Internet Explorer 8 and under. It's written in such a way that it will probably patch support for other non-supporting browsers as well (more information on that soon).
 
-If you're unfamiliar with the concepts surrounding Responsive Web Design, you can read up [here](http://www.alistapart.com/articles/responsive-web-design/) and also [here](http://filamentgroup.com/examples/responsive-images/)
+If you're unfamiliar with the concepts surrounding Responsive Web Design, you can read up [here](http://www.alistapart.com/articles/responsive-web-design/) and also [here](http://scottjehl.github.io/picturefill/)
 
-[Demo page](https://rawgithub.com/scottjehl/Respond/master/test/test.html) (the colors change to show media queries working)
+[Demo page](http://scottjehl.github.io/Respond/test/test.html) (the colors change to show media queries working)
 
 
 Usage Instructions
 ======
 
 1. Craft your CSS with min/max-width media queries to adapt your layout from mobile (first) all the way up to desktop
-
-
 <pre>
     @media screen and (min-width: 480px){
         ...styles for 480px and up go here
@@ -32,28 +30,7 @@ Usage Instructions
 CDN/X-Domain Setup
 ======
 
-Respond.js works by requesting a pristine copy of your CSS via AJAX, so if you host your stylesheets on a CDN (or a subdomain), you'll need to upload a proxy page to enable cross-domain communication.
-
-See `cross-domain/example.html` for a demo:
-
-- Upload `cross-domain/respond-proxy.html` to your external domain
-- Upload `cross-domain/respond.proxy.gif` to your origin domain
-- Reference the file(s) via `<link />` element(s):
-
-<pre>
-	&lt;!-- Respond.js proxy on external server --&gt;
-	&lt;link href=&quot;http://externalcdn.com/respond-proxy.html&quot; id=&quot;respond-proxy&quot; rel=&quot;respond-proxy&quot; /&gt;
-
-	&lt;!-- Respond.js redirect location on local server --&gt;
-	&lt;link href=&quot;/path/to/respond.proxy.gif&quot; id=&quot;respond-redirect&quot; rel=&quot;respond-redirect&quot; /&gt;
-
-	&lt;!-- Respond.js proxy script on local server --&gt;
-	&lt;script src="/path/to/respond.proxy.js"&gt;&lt;/script&gt;
-</pre>
-
-If you are having problems with the cross-domain setup, make sure respond-proxy.html does not have a query string appended to it.
-
-Note: HUGE thanks to @doctyper for the contributions in the cross-domain proxy!
+Respond.js works by requesting a pristine copy of your CSS via AJAX, so if you host your stylesheets on a CDN (or a subdomain), you'll need to set up a local proxy to request the CSS for old IE browsers. Prior versions recommended a deprecated x-domain approach, but a local proxy is preferable (for performance and security reasons) to attempting to work around the cross-domain limitations.
 
 
 Support & Caveats
